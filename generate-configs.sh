@@ -47,7 +47,6 @@ SS_URL=`docker exec -it ss-rust ssurl --encode /etc/shadowsocks-rust/config.json
 echo "${SS_URL}"
 
 cat << EOF > /root/vpn_config.txt
-
 ================================================
 
 IPsec VPN server is now ready for use!
@@ -58,7 +57,7 @@ Server IP: ${IP_ADDRESS}
 Username: ${USERNAME}
 Password: ${PASSWORD}
 IPsec PSK: ${PSK}
-
+SS URL: ${SS_URL}
 
 A more chinese friendly version:
 
@@ -67,12 +66,7 @@ IP地址: ${IP_ADDRESS}
 用户: ${USERNAME}
 密码: ${PASSWORD}
 密钥: ${PSK}
-
-Write these down. You'll need them to connect!
-
-Important notes:   https://git.io/vpnnotes
-Setup VPN clients: https://git.io/vpnclients
-
+SS 链接：${SS_URL}
 ================================================
 EOF
 cat /root/vpn_config.txt
