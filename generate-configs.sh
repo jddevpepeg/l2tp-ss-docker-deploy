@@ -12,9 +12,9 @@ if [[ ${PSK} == '' ]]; then PSK=`echo ${RANDOM} | md5sum | head -c 12`; fi
 if [[ ${PASSWORD} == '' ]]; then PASSWORD=`echo ${RANDOM} | md5sum | head -c 12`; fi
 
 cat << EOF > vpn.env
-USERNAME=${USERNAME}
-PASSWORD=${PASSWORD}
-PSK=${PSK}
+VPN_USER=${USERNAME}
+VPN_PASSWORD=${PASSWORD}
+VPN_IPSEC_PSK=${PSK}
 VPN_DNS_SRV1=8.8.8.8
 VPN_DNS_SRV2=8.8.4.4
 EOF
@@ -33,7 +33,7 @@ cat << EOF > shadowsocks-config.json
 }
 EOF
 
-docker compose up -d &> /dev/null
+docker compose up -d
 if [[ $? -ne 0 ]]; then
   echo "having error deployment"; exit 1
 
