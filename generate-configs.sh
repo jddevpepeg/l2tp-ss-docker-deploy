@@ -11,7 +11,7 @@ if [[ ${USERNAME} == '' ]]; then USERNAME=`echo ${RANDOM} | md5sum | head -c 12`
 if [[ ${PSK} == '' ]]; then PSK=`echo ${RANDOM} | md5sum | head -c 12`; fi
 if [[ ${PASSWORD} == '' ]]; then PASSWORD=`echo ${RANDOM} | md5sum | head -c 12`; fi
 
-cat << EOF > vpn.env
+cat << EOF > /opt/vpn.env
 VPN_USER=${USERNAME}
 VPN_PASSWORD=${PASSWORD}
 VPN_IPSEC_PSK=${PSK}
@@ -21,7 +21,7 @@ EOF
 
 SS_PASSWORD=`tr -dc 'A-Za-z0-9!@$%#^' </dev/urandom | head -c 13`
 
-cat << EOF > shadowsocks-config.json
+cat << EOF > /opt/shadowsocks-config.json
 {
     "server":"0.0.0.0",
     "server_port":9000,

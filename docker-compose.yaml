@@ -10,7 +10,7 @@ services:
     volumes:
       - /data/l2tp-data:/etc/ipsec.d
       - /lib/modules:/lib/modules:ro
-      - ./vpn.env:/opt/env/vpn.env
+      - /opt/vpn.env:/opt/env/vpn.env
   shadowsocks:
     container_name: ss-rust
     restart: always
@@ -19,4 +19,4 @@ services:
       - 9000:9000
       - 9000:9000/udp
     volumes:
-      - ./shadowsocks-config.json:/etc/shadowsocks-rust/config.json
+      - /opt/shadowsocks-config.json:/etc/shadowsocks-rust/config.json
