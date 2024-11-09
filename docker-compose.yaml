@@ -1,16 +1,4 @@
 services:
-  vpn:
-    container_name: l2tp-vpn
-    image: jddevpepeg/docker_l2tp_vpn:latest
-    restart: always
-    privileged: true
-    ports:
-      - 500:500/udp
-      - 4500:4500/udp
-    volumes:
-      - /data/l2tp-data:/etc/ipsec.d
-      - /lib/modules:/lib/modules:ro
-      - /opt/vpn.env:/opt/env/vpn.env
   shadowsocks:
     container_name: ss-rust
     restart: always
